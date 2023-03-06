@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Button, Text, Image } from '@rneui/themed';
+import { mdiTranslate } from '@mdi/js';
 import {
     View, StyleSheet, SafeAreaView,
     ActivityIndicator,
@@ -16,16 +17,53 @@ export default class Welcome extends Component {
     render() {
         return (
             <SafeAreaView style={styles.container}>
+                <View>
+                    <View style={styles.headcontainer}>
+                        <Image
+                            source={require('../../../assets/faceid-logo.png')}
+                            style={{ width: 30, height: 30, borderRadius: 15 }}
+                            PlaceholderContent={<ActivityIndicator />}
+                        />
+                        <Text style={{ fontFamily: 'Roboto', fontWeight: 'bold', fontSize: 16, padding: 8 }}>FACE ID</Text>
+                        {/* <View style={{alignItems: 'flex-end'}}> */}
+
+                        <Button
+                            title="HOME"
+                            icon={{
+                                name: 'g-translate',
+                                size: 11,
+                                color: '#545454',
+
+                            }}
+                            iconContainerStyle={{ marginRight: 10 }}
+                            buttonStyle={{
+                                backgroundColor: '#fff',
+                                text: '#545454',
+                                borderWidth: 1,
+                                borderColor: '#545454',
+                                borderRadius: 30,
+                            }}
+                            containerStyle={{
+                                marginLeft: 'auto',
+                                width: 90,
+                                height: 35,
+                            }}
+                            titleStyle={{ fontSize: 12, fontWeight: '300', color: "#545454" }}
+                        />
+                    </View>
+                </View>
+                {/* </View> */}
+
                 <View style={styles.imagecontainer}>
                     <Image
                         source={require('../../../assets/welcome.png')}
-                        style={{width: 365, height: 214}}
+                        style={{ width: 365, height: 214, alignContent: 'center' }}
                         PlaceholderContent={<ActivityIndicator />}
                     />
-                </View>
-                <View style={styles.welcometext}>
-                    <Text style={{ fontFamily: 'Roboto', fontWeight: '700', fontSize: 22, textAlign: 'center' }} >Welcome to FlokX Face ID App!</Text>
-                    <Text style={{ fontFamily: 'Roboto', fontWeight: '400', fontSize: 14, textAlign: 'center' }}>Your go-to app for all things goats. We’re here to help with your most pressing problems.</Text>
+                    <View style={styles.welcometext}>
+                        <Text style={{ fontFamily: 'Roboto', fontWeight: '700', fontSize: 22, textAlign: 'center' }} >Welcome to FlokX Face ID App!</Text>
+                        <Text style={{ fontFamily: 'Roboto', fontWeight: '400', fontSize: 14, textAlign: 'center' }}>Your go-to app for all things goats. We’re here to help with your most pressing problems.</Text>
+                    </View>
                 </View>
                 <View style={styles.bottom}>
 
@@ -86,16 +124,24 @@ const styles = StyleSheet.create({
         paddingBottom: 10,
         marginTop: 20
     },
+    headcontainer: {
+        padding: 12,
+        flexDirection: 'row'
+    },
     imagecontainer: {
         flex: 1,
+        alignSelf: 'center',
+        paddingTop: 20,
         alignContent: 'center',
+        alignItems: 'center',
         justifyContent: 'center',
-        marginHorizontal: 13
+        flexDirection: 'column'
+
     },
     welcometext: {
-        flex: 1,
-        alignContent: 'center',
-        justifyContent: 'center',
+        // flex: 1,
+        // alignContent: 'center',
+        // justifyContent: 'center',
         paddingHorizontal: 30,
         paddingBottom: 10
     },
