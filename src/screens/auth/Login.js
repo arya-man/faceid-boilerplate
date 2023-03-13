@@ -19,33 +19,37 @@ export default class Welcome extends Component {
     handleSaveNumber = async() => {
         const { number } = this.state;
         console.log(number);
-        fetch('http://192.168.1.4:8000/api/phone', {
-            method: 'post',
-            headers: {
-            'Content-Type': 'application/json'
-            },
-           
-            body: JSON.stringify({ number: number })
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-        })
-        .catch(error => {
-            console.log(error);
-            console.log("YESS");
-        });
+        if (number.length < 10) {
+            Alert.alert('Error', 'Phone number must be at least 10 digits');
+        }
+        else {
+                fetch('http://192.168.1.4:8000/api/phone', {
+                    method: 'post',
+                    headers: {
+                    'Content-Type': 'application/json'
+                    },
+                
+                    body: JSON.stringify({ number: number })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                })
+                .catch(error => {
+                    console.log(error);
+                    console.log("YESS");
+                });
 
-        this.props.navigation.navigate('Verify')
-
+                this.props.navigation.navigate('Verify');
+        }
     }
     naviagateToVerify = () => {
 
-        this.props.navigation.navigate('Verify')
+        this.props.navigation.navigate('Verify');
     }
 
     naviagateBack = () => {
-        this.props.navigation.goBack()
+        this.props.navigation.goBack();
     }
 
     render() {
